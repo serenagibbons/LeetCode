@@ -5,15 +5,16 @@ import java.util.ArrayList;
 class Solution {
     public int reverse(int x) {
         ArrayList<Integer> digits = new ArrayList<>();
+        int n = x;
         
-        while (x > 0) {
-            int y = x%10;
+        while (n > 0) {
+            int y = n%10;
             digits.add(y);
-            x -= y;
-            if (x < 10)
-                digits.add(x);
-            if (x != 0)
-                x /=10;
+            n -= y;
+            if (n < 10)
+                digits.add(n);
+            if (n != 0)
+                n /=10;
         }
         
         int result = 0;
@@ -25,6 +26,9 @@ class Solution {
                 result += digits.get(i);
             }
         }
+        
+        if (x < 0)
+        	return result * -1;
         
         return result;
     }
